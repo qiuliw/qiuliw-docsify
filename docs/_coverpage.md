@@ -8,6 +8,6 @@
 - 密码朋克：用代码把自由变成现实
 - Markdown 即内容，写就发布
 
-[GitHub](https://github.com/qiuliw)
+[GitHub](https://github.com/qiuliw/qiuliw-docsify)
 [开始阅读](#blog)
 

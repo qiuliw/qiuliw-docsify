@@ -18,5 +18,5 @@
 
 ## 联系我
 
-- GitHub: [qiuliw](https://github.com/qiuliw/qiuliw-docsify)
+- GitHub: [qiuliw](https://github.com/qiuliw)
 - Email: a1807191473@gmail.com
