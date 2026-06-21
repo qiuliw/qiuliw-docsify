@@ -1,4 +1,4 @@
-![logo](https://docsify.js.org/_media/icon.svg)
+![logo](_media/icon.svg)
 
 # qiuliw blog :id=blog
 
