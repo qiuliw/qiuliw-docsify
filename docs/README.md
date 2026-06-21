@@ -1,4 +1,4 @@
-# qiuliw 的 博客
+# qiuliw blog
 
 > 记录技术笔记、开发心得与随手记。
 
