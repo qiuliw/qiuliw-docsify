@@ -8,7 +8,6 @@
 - 密码朋克：用代码把自由变成现实
 - Markdown 即内容，写就发布
 
-[开始阅读](#blog)
 [GitHub](https://github.com/qiuliw)
+[开始阅读](#blog)
 
-![color](#42b983)
