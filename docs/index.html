@@ -7,6 +7,24 @@
   <meta name="description" content="qiuliw 个人文档站点">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <style>
+    .doc-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.25rem;
+      margin: -0.25rem 0 1.75rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(125, 138, 153, 0.2);
+      font-size: 0.8125rem;
+      line-height: 1.5;
+      color: #7d8a99;
+    }
+
+    .doc-meta time {
+      color: #57606a;
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
 </head>
 <body>
   <div id="app">加载中...</div>
@@ -23,10 +41,38 @@
         noData: '没有找到结果',
         depth: 3,
       },
+      plugins: [
+        function docMeta(hook, vm) {
+          hook.afterEach(function (html, next) {
+            var fm = vm.frontmatter || {};
+            var created = fm.created;
+            var updated = fm.updated;
+
+            if (!created && !updated) {
+              next(html);
+              return;
+            }
+
+            var parts = [];
+            if (created) {
+              parts.push('创建于 <time datetime="' + created + '">' + created + '</time>');
+            }
+            if (updated) {
+              parts.push('更新于 <time datetime="' + updated + '">' + updated + '</time>');
+            }
+
+            var meta = '<div class="doc-meta">' + parts.join('<span aria-hidden="true"> · </span>') + '</div>';
+            var updatedHtml = html.replace(/(<h1[^>]*>[\s\S]*?<\/h1>)/i, '$1' + meta);
+
+            next(updatedHtml);
+          });
+        },
+      ],
     }
   </script>
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/front-matter.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
 </body>
 </html>
