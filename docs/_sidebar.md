@@ -1,4 +1,5 @@
 - 首页
   - [简介](/)
-- 指南
+
+- 关于本站
   - [Docsify 快速入门](/docsify-quick-start.md)
