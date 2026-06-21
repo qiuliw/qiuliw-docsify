@@ -16,8 +16,6 @@
 
 言语乏力，也借此锻炼，望观者海涵。
 
-相关阅读：[Cypherpunks write code.](/notes/cypherpunks-write-code.md)
-
 ## 联系我
 
 - GitHub: [qiuliw](https://github.com/)
