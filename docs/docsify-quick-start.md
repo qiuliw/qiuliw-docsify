@@ -168,10 +168,10 @@ Listening at http://localhost:44641
   <title>Document</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="description" content="Description">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@5.0.0-rc.4/dist/themes/core.min.css">
 </head>
-<body>
+<body class="loading">
   <div id="app"></div>
   <script>
     window.$docsify = {
@@ -179,8 +179,7 @@ Listening at http://localhost:44641
       repo: ''
     }
   </script>
-  <!-- Docsify v4 -->
-  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify@5.0.0-rc.4/dist/docsify.min.js"></script>
 </body>
 </html>
 ```

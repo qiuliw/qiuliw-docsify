@@ -4,30 +4,36 @@
   <meta charset="UTF-8">
   <title>qiuliw blog</title>
   <link rel="icon" href="_media/favicon.ico">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="description" content="qiuliw 个人文档站点">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@5.0.0-rc.4/dist/themes/core.min.css">
   <style>
     .doc-meta {
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem 1.25rem;
-      margin: -0.25rem 0 1.75rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid rgba(125, 138, 153, 0.2);
-      font-size: 0.8125rem;
-      line-height: 1.5;
-      color: #7d8a99;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 2.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-color);
+      font-size: var(--font-size-s);
+      line-height: var(--line-height);
+      color: var(--color-mute);
+    }
+
+    .doc-meta-updated {
+      margin-left: auto;
+      text-align: right;
     }
 
     .doc-meta time {
-      color: #57606a;
+      color: var(--color-text);
       font-variant-numeric: tabular-nums;
+      white-space: nowrap;
     }
   </style>
 </head>
-<body>
+<body class="loading">
   <div id="app">加载中...</div>
   <script>
     window.$docsify = {
@@ -44,36 +50,73 @@
       },
       plugins: [
         function docMeta(hook, vm) {
+          function pad(n) {
+            return n < 10 ? '0' + n : '' + n;
+          }
+
+          function formatMetaDate(value) {
+            if (!value) return null;
+
+            if (value instanceof Date && !isNaN(value.getTime())) {
+              return {
+                display:
+                  value.getFullYear() +
+                  '/' +
+                  pad(value.getMonth() + 1) +
+                  '/' +
+                  pad(value.getDate()) +
+                  ' ' +
+                  pad(value.getHours()) +
+                  ':' +
+                  pad(value.getMinutes()),
+                datetime: value.toISOString(),
+              };
+            }
+
+            var text = String(value);
+            return { display: text, datetime: text };
+          }
+
           hook.afterEach(function (html, next) {
             var fm = vm.frontmatter || {};
-            var created = fm.created;
-            var updated = fm.updated;
+            var created = formatMetaDate(fm.created);
+            var updated = formatMetaDate(fm.updated);
 
             if (!created && !updated) {
               next(html);
               return;
             }
 
-            var parts = [];
+            var left = '';
+            var right = '';
+
             if (created) {
-              parts.push('创建于 <time datetime="' + created + '">' + created + '</time>');
+              left =
+                '<span class="doc-meta-created">创建于 <time datetime="' +
+                created.datetime +
+                '">' +
+                created.display +
+                '</time></span>';
             }
             if (updated) {
-              parts.push('更新于 <time datetime="' + updated + '">' + updated + '</time>');
+              right =
+                '<span class="doc-meta-updated">更新于 <time datetime="' +
+                updated.datetime +
+                '">' +
+                updated.display +
+                '</time></span>';
             }
 
-            var meta = '<div class="doc-meta">' + parts.join('<span aria-hidden="true"> · </span>') + '</div>';
-            var updatedHtml = html.replace(/(<h1[^>]*>[\s\S]*?<\/h1>)/i, '$1' + meta);
+            var meta = '<footer class="doc-meta">' + left + right + '</footer>';
 
-            next(updatedHtml);
+            next(html + meta);
           });
         },
       ],
     }
   </script>
-  <!-- Docsify v4 -->
-  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
-  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/front-matter.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify@5.0.0-rc.4/dist/docsify.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify@5.0.0-rc.4/dist/plugins/search.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify@5.0.0-rc.4/dist/plugins/front-matter.min.js"></script>
 </body>
 </html>
