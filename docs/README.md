@@ -16,3 +16,29 @@
 
 - GitHub: [qiuliw](https://github.com/qiuliw)
 - Email: a1807191473@gmail.com
+
+## 工作经历
+
+## 工作经验
+
+
+### 莆田汉鼎网络科技有限公司 -前端开发（实习）
+
+**2024.4 - 2024.6**
+
+- 参与搭建 React + Ant Design 电商独立站框架
+- 负责用户登录、订单、商品管理、国际化等页面模块开发。
+- 项目链接：admin.matacart.com
+
+
+### **北京中维视界有限公司 - Rust+React+Unity全栈工程师**
+
+**2025.9 - 2026.4**
+
+- 独立完成Tauri封装的React管理端应用；
+- 使用Rust Axum与React搭建教学数据后台网站；
+- 对模型使用llamafactory微调，使用langchain组织模型调用链组织与RAGFlow知识库管理、优化AI流式回复，搭建Unity AI语音虚拟数字人；
+- 负责军工引擎数据报文处理接收，利用双缓冲减少数据延迟；
+- 完成微软Kinect体感交互外设的Unity应用接入；
+- 构建状态机完成Unity仿真实验演示；
+- 基于naninovel完成unity教学对话游戏；
